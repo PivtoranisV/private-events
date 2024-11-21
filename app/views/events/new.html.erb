@@ -1,2 +1,43 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<%= form_with model: @event do |form| %>
+  <% if @event.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(@event.errors.count, "error") %> prevented this event from being saved:</h2>
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :title, "Event Title" %>
+    <%= form.text_field :title %>
+  </div>
+  <br>
+  <br>
+  <div>
+    <%= form.label :description, "Event Description" %>
+    <%= form.textarea :description %>
+  </div>
+  <br>
+  <br>
+  <div>
+    <%= form.label :location, "Event location" %>
+    <%= form.text_field :location %>
+  </div>
+  <br>
+  <br>
+  <div>
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+  <br>
+  <br>
+  <div>
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+  <br>
+  <br>
+  <%= form.submit %>
+<% end %>
