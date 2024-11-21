@@ -1,7 +1,8 @@
-<%= form_with model: @event do |form| %>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Create a New Event</h1>
   <% if @event.errors.any? %>
-    <div class="error-messages">
-      <h2><%= pluralize(@event.errors.count, "error") %> prevented this event from being saved:</h2>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@event.errors.count, "error") %> prevented this event from being saved:</h4>
       <ul>
         <% @event.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -9,35 +10,30 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :title, "Event Title" %>
-    <%= form.text_field :title %>
-  </div>
-  <br>
-  <br>
-  <div>
-    <%= form.label :description, "Event Description" %>
-    <%= form.textarea :description %>
-  </div>
-  <br>
-  <br>
-  <div>
-    <%= form.label :location, "Event location" %>
-    <%= form.text_field :location %>
-  </div>
-  <br>
-  <br>
-  <div>
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-  <br>
-  <br>
-  <div>
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-  <br>
-  <br>
-  <%= form.submit %>
-<% end %>
+  <%= form_with model: @event do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, "Event Title", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Enter event title" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :description, "Event Description", class: "form-label" %>
+      <%= form.text_area :description, class: "form-control", rows: 4, placeholder: "Describe your event" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :location, "Event Location", class: "form-label" %>
+      <%= form.text_field :location, class: "form-control", placeholder: "Enter location" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :date, "Event Date", class: "form-label" %>
+      <%= form.date_select :date, class: "form-select", start_year: Date.current.year %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :category, "Event Category", class: "form-label" %>
+      <%= form.text_field :category, class: "form-control", placeholder: "e.g., Music, Art, Dinner" %>
+    </div>
+    <div class="d-flex justify-content-between">
+      <%= link_to "Back to Events", events_path, class: "btn btn-warning" %>
+      <%= form.submit "Create Event", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
