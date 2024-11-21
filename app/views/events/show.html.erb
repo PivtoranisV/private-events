@@ -1,2 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white text-center">
+          <h3><%= @event.title %></h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><strong>Description:</strong></p>
+          <p><%= @event.description %></p>
+          <ul class="list-unstyled">
+            <li><strong>Location:</strong> <%= @event.location %></li>
+            <li><strong>Date:</strong> <%= @event.date.strftime("%B %d, %Y") %></li>
+            <li><strong>Category:</strong> <%= @event.category %></li>
+            <li><strong>Created By:</strong> <%= @event.creator.name %></li>
+          </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <%= link_to "Back to Events", events_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
