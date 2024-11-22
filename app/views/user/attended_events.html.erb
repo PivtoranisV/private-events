@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h1><%= current_user.name %>'s Attended Events</h1>
+  <div class="row g-4">
+    <% if @attended_events.exists? %>
+      <% @attended_events.each do |event| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= event.title %></h5>
+              <p class="card-text text-muted"><%= truncate(event.description, length: 100) %></p>
+              <ul class="list-unstyled">
+                <li><strong>Location:</strong> <%= event.location %></li>
+                <li><strong>Date:</strong> <%= event.date.strftime("%B %d, %Y") %></li>
+                <li><strong>Category:</strong> <%= event.category %></li>
+              </ul>
+              <%= link_to "Event Details", event_path(event), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3><%= current_user.name %> you do not have any events to attend</h3>
+    <% end %>
+  </div>
+</div>
