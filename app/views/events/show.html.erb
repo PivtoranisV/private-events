@@ -16,6 +16,7 @@
           </ul>
         </div>
         <div class="card-footer d-flex justify-content-between">
+          <%= button_to "Attend Event", attend_event_path(@event), method: :post, class: "btn btn-primary" %>
           <%= link_to "Back to Events", events_path, class: "btn btn-info" %>
         </div>
       </div>

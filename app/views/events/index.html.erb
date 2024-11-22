@@ -13,7 +13,7 @@
               <li><strong>Category:</strong> <%= event.category %></li>
             </ul>
             <div class="d-flex justify-content-between mt-3">
-              <a href="#" class="btn btn-info">Attend Event</a>
+              <%= button_to "Attend Event", attend_event_path(event), method: :post, class: "btn btn-info" %>
               <%= link_to "Event Details", event, class: "btn btn-warning" %>
             </div>
           </div>
