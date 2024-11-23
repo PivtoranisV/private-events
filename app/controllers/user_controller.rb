@@ -10,7 +10,12 @@ before_action :authenticate_user!
    end
 
    def attend
-     Event.find(params[:id]).attendees << current_user
+    event = Event.find(params[:id])
+    if current_user.attended_events.include?(event)
+      redirect_to event_path(event), alert: "You are already attending this event."
+    else
+     event.attendees << current_user
      redirect_to event_path(params[:id]), notice: "You are now attending this event."
+    end
    end
 end
