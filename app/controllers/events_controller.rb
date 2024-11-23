@@ -51,6 +51,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def art_events
+    @events = Event.where(category: "Art")
+  end
+
   private
 
   def event_params
