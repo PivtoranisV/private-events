@@ -51,8 +51,9 @@ class EventsController < ApplicationController
     end
   end
 
-  def art_events
-    @events = Event.where(category: "Art")
+  def filtered_events
+    @category = params[:category]
+    @events = Event.where(category: @category)
   end
 
   private

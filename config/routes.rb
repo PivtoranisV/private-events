@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get "created_events", to: "user#created_events"
   get "attended_events", to: "user#attended_events"
   post "attend/:id", to: "user#attend", as: "attend_event"
-  get "art_events", to: "events#art_events"
+  get "filtered_events/:category", to: "events#filtered_events", as: "filtered_events"
+
 
   get "up" => "rails/health#show", as: :rails_health_check
 
