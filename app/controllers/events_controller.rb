@@ -23,9 +23,21 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
+     if @event.creator != current_user
+    redirect_to events_path, alert: "You are not authorized to edit this event."
+     end
   end
 
   def update
+    @event = Event.find(params[:id])
+    if @event.creator != current_user
+      redirect_to events_path, alert: "You are not authorized to edit this event."
+    elsif @event.update(event_params)
+      redirect_to @event, notice: "Event was successfully updated."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy

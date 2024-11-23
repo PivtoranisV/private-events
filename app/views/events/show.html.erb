@@ -15,6 +15,11 @@
             <li><strong>Created By:</strong> <%= @event.creator.name %></li>
           </ul>
         </div>
+        <% if @event.creator == current_user %>
+          <div class="text-center mb-3">
+            <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning btn-lg" %>
+          </div>
+        <% end %>
         <div class="card-footer d-flex justify-content-between">
           <%= button_to "Attend Event", attend_event_path(@event), method: :post, class: "btn btn-primary" %>
           <%= link_to "Back to Events", events_path, class: "btn btn-info" %>
