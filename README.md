@@ -40,13 +40,13 @@ git clone https://github.com/PivtoranisV/private-events.git
 cd private-events
 ```
 
-1. Install dependencies:
+2. Install dependencies:
 
 ```bash
 bundle install
 ```
 
-1. Set up the database:
+3. Set up the database:
 
 ```bash
 rails db:create
@@ -54,13 +54,13 @@ rails db:migrate
 rails db:seed
 ```
 
-1. Start the Rails server:
+4. Start the Rails server:
 
 ```bash
 bin/dev
 ```
 
-1. Open the application in your browser at <http://localhost:3000>.
+5. Open the application in your browser at <http://localhost:3000>.
 
 ## Usage
 
