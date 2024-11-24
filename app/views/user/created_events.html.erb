@@ -4,15 +4,18 @@
     <% @created_events.each do |event| %>
       <div class="col-md-6 col-lg-4">
         <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <p class="card-text text-muted"><%= truncate(event.description, length: 100) %></p>
-            <ul class="list-unstyled">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-header"><%= event.title %></h5>
+            <p class="card-text text-muted"><%= truncate(event.description, length: 20) %></p>
+            <ul class="list-unstyled mt-auto">
               <li><strong>Location:</strong> <%= event.location %></li>
               <li><strong>Date:</strong> <%= event.date.strftime("%B %d, %Y") %></li>
               <li><strong>Category:</strong> <%= event.category %></li>
             </ul>
-            <%= link_to "Event Details", event_path(event), class: "btn btn-primary" %>
+            <div class="d-flex justify-content-between mt-3">
+              <%= button_to "Attend Event", attend_event_path(event), method: :post, class: "btn btn-outline-info" %>
+              <%= link_to "Event Details", event, class: "btn btn-warning" %>
+            </div>
           </div>
         </div>
       </div>

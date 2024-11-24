@@ -6,33 +6,37 @@
           <h3><%= @event.title %></h3>
         </div>
         <div class="card-body">
-          <p class="card-text"><strong>Description:</strong></p>
-          <p><%= @event.description %></p>
+          <p class="fw-bold">Description:</p>
+          <p class="text-muted"><%= @event.description %></p>
           <ul class="list-unstyled">
             <li><strong>Location:</strong> <%= @event.location %></li>
             <li><strong>Date:</strong> <%= @event.date.strftime("%B %d, %Y") %></li>
             <li><strong>Category:</strong> <%= @event.category %></li>
             <li><strong>Created By:</strong> <%= @event.creator.name %></li>
           </ul>
-          <p class="card-text"><strong>Attendees:</strong></p>
-          <ul class="list-unstyled">
-            <% @event.attendees.each do |attendee| %>
-              <li><%= attendee.name %></li>
-            <% end %>
-          </ul>
+          <p class="fw-bold mt-4">Attendees:</p>
+          <% if @event.attendees.any? %>
+            <ul class="list-group">
+              <% @event.attendees.each do |attendee| %>
+                <li class="list-group-item"><%= attendee.name %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="text-muted">No attendees yet. Be the first to join!</p>
+          <% end %>
         </div>
         <% if @event.creator == current_user %>
-          <div class="text-center mb-3">
-            <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning btn-lg" %>
-            <%= link_to "Delete Event", event_path(@event), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: "btn btn-danger btn-lg" %>
+          <div class="card-footer bg-secondary text-center">
+            <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning mx-2" %>
+            <%= link_to "Delete Event", event_path(@event), 
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+                class: "btn btn-danger mx-2" %>
           </div>
         <% end %>
-        <div class="card-footer d-flex justify-content-between">
-          <%= button_to "Attend Event", attend_event_path(@event), method: :post, class: "btn btn-primary" %>
-          <%= link_to "Back to Events", events_path, class: "btn btn-info" %>
+        <div class="card-footer bg-secondary d-flex justify-content-between">
+          <%= button_to "Attend Event", attend_event_path(@event), 
+              method: :post, class: "btn btn-outline-info" %>
+          <%= link_to "Back to Events", events_path, class: "btn btn-warning" %>
         </div>
       </div>
     </div>
