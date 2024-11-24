@@ -1,24 +1,78 @@
-# README
+# Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Private Events is a **Ruby on Rails** application where users can create events, attend events, and view events filtered by categories like Art, Music, Education, and other. The app demonstrates the use of Rails associations, authentication, and authorization using **Devise**, as well as front-end design with **Bootstrap**.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- User authentication and registration using Devise.
+- Users can create, edit, and delete events.
+- Events include details like title, description, date, location, and category.
+- Users can attend events.
+- Event attendees are listed on the event detail page.
+- View all events or filter events by category (e.g., Art, Music).
+- Separate views for created events and attended events.
+- Responsive UI with Bootstrap.
 
-* System dependencies
+## Technologies Used
 
-* Configuration
+- Backend: Ruby on Rails
+- Frontend: HTML, CSS, Bootstrap
+- Database: PostgreSQL
+- Authentication: Devise gem
+- Testing: RSpec, Shoulda Matchers, Capybara
+- Version Control: Git
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+- Ruby (version 3.2.2 or higher)
+- Rails (version 7.0 or higher)
+- PostgreSQL
+- Bundler
 
-* Services (job queues, cache servers, search engines, etc.)
+### Installation
 
-* Deployment instructions
+1. Clone the repository:
 
-* ...
+```bash
+git clone https://github.com/PivtoranisV/private-events.git
+cd private-events
+```
+
+1. Install dependencies:
+
+```bash
+bundle install
+```
+
+1. Set up the database:
+
+```bash
+rails db:create
+rails db:migrate
+rails db:seed
+```
+
+1. Start the Rails server:
+
+```bash
+bin/dev
+```
+
+1. Open the application in your browser at <http://localhost:3000>.
+
+## Usage
+
+### Navigation
+
+- Home Page: Access links to view all events, your created events, attended events, or filter events by category.
+- Create a new event from the “Create New Event” link in the navigation bar.
+- Edit or delete your events from the event detail page.
+- Attend an event using the “Attend Event” button on event cards or the event detail page.
+- View a list of attendees on each event detail page.
+
+## Acknowledgments
+
+- Thanks to the creators of Ruby on Rails and the Devise gem for powering the application.
+- Bootstrap for the responsive UI framework.
