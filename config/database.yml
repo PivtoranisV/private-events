@@ -58,7 +58,6 @@ development:
 test:
   <<: *default
   database: private_events_test
-
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -80,18 +79,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary:
-    <<: *default
-    database: <%= ENV["DATABASE_URL"] %>
-  cache:
-    <<: *primary
-    database: private_events_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary
-    database: private_events_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary
-    database: private_events_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  database: private_events_production
